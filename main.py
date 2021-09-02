@@ -8,8 +8,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.chrome.options import Options
 import pandas as pd
+#tes contribution from my pc bru
 
-#tes contribution github
 #driver = webdriver.Chrome("D:\chromedriver")
 
 # #activate GL first
