@@ -31,9 +31,11 @@ import pandas as pd
 
 #activate GL first
 options = Options()
-# experimentalFlags = ['CookiesWithoutSameSiteMustBeSecure','SameSiteByDefaultCookies']
+#options.add_argument("--kiosk")#fullscreen
 options.add_argument('--enable-webgl-draft-extensions')
 driver = webdriver.Chrome('D:\chromedriver', chrome_options = options)
+driver.maximize_window()
+print("WebGL Activated")
 
 #open google play
 driver.get("https://play.google.com/store/apps/details?id=com.mobile.legends&showAllReviews=true")
@@ -60,11 +62,11 @@ while not(click == 100):
             showMore = driver.find_element_by_class_name("U26fgb.O0WRkf.oG5Srb.C0oVfc.n9lfJ.M9Bg4d")
             action.move_to_element(showMore)
             action.click(showMore)
-            action.perform()            
+            action.perform()
+            sleep(10)            
             #showMore.click()
-            print(str(click))
+            print("Click Showmore "+str(click))
             click += 1
-            sleep(10)
         except: 
             print("------Scroll selesai-------")
             print("Click ShowMore Counts = " + str(click))
