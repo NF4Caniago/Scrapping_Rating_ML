@@ -4,12 +4,39 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.chrome.options import Options
 import pandas as pd
 
-driver = webdriver.Chrome("D:\chromedriver")
-driver.get("https://play.google.com/store/apps/details?id=com.mobile.legends&showAllReviews=true")
+#driver = webdriver.Chrome("D:\chromedriver")
 
-#sleep for activation WebGL
+# #activate GL first
+# print("Activated WebGL")
+# driver.get("chrome://flags")
+# search = driver.find_element_by_id("search")
+# search.send_keys("WebGL")
+# search.send_keys(Keys.RETURN)
+# sleep(3)
+# #driver.find_element_by_xpath("//select[@class='experiment-enable-disable']/option[text() ='Enabled']").click()
+# #SD.send_keys(Keys.RETURN)
+# SD = Select(driver.find_element_by_xpath("//select[@class='experiment-enable-disable']"))
+# SD.select_by_value("enabled")
+# enable = driver.find_element_by_xpath("//option[@value='enabled']")
+# enable.selectByValue("enabled")
+# experiment = driver.find_element_by_id("experiment-restart-button")
+# experiment.click()
+# sleep(10)
+# print("WebGL Activated")
+
+#activate GL first
+options = Options()
+# experimentalFlags = ['CookiesWithoutSameSiteMustBeSecure','SameSiteByDefaultCookies']
+options.add_argument('--enable-webgl-draft-extensions')
+driver = webdriver.Chrome('D:\chromedriver', chrome_options = options)
+
+#open google play
+driver.get("https://play.google.com/store/apps/details?id=com.mobile.legends&showAllReviews=true")
 sleep(10)
 action = ActionChains(driver)
 
